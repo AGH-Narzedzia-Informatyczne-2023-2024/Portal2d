@@ -5,3 +5,7 @@ Portal2d to gra odbywająca się w futurystycznej przyszłości. Gra będzie typ
 
 
 
+
+![image pokoju1](pictures/pokoj1.png)
+
+Obiekt testowy nie może wejść w kolce - w przeciwnym wypadku spotka go utrata życia (prawy górny róg).
