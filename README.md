@@ -32,12 +32,12 @@ Różne ułożenie bloków i połapek utrudnia walkę z przeciwnikami.
 
 
 ## Autorzy:
-    * Mateusz Kotarba
-    * Konrad Małek
-    * Bartłomiej Mazgaj
-    * Natalia Kuchta
-    * Grzegorz Lenarski
-    * Jarosław Mastalerczyk
+* Mateusz Kotarba
+* Konrad Małek
+* Bartłomiej Mazgaj
+* Natalia Kuchta
+* Grzegorz Lenarski
+* Jarosław Mastalerczyk
 
 
 ## Licencja:
