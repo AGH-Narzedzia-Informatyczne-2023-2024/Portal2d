@@ -16,6 +16,6 @@ Docelową postacią jest astronauta znajdujący się w wielopoziomowej przestrze
 
 Obiekt testowy nie może wejść w kolce - w przeciwnym wypadku spotka go utrata życia (prawy górny róg).
 
-![image pokoju1](pictures/pokoj2.png)
+![image pokoju2](pictures/pokoj2.png)
 
 Różne ułożenie bloków i połapek utrudnia walkę z przeciwnikami.
