@@ -6,12 +6,12 @@ import player
 import level
 import menu
 
-def main():
 
+def main():
     pygame.init()
     clock = pygame.time.Clock()
 
-    screen = pygame.display.set_mode((1280, 720))
+    screen = pygame.display.set_mode((1300, 900), pygame.RESIZABLE)
     screen.fill((255, 255, 255))
 
     character = player.player((300, 300))
@@ -23,28 +23,34 @@ def main():
     up = False
     down = False
 
+    simulation.settings.read_settings()
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.VIDEORESIZE:
+                pass
+            if event.type == pygame.VIDEOEXPOSE:
+                pass
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_a:
+                if event.key == simulation.settings.key_left:
                     left = False
-                if event.key == pygame.K_s:
+                if event.key == simulation.settings.key_right:
                     right = False
-                if event.key == pygame.K_w:
+                if event.key == simulation.settings.key_up:
                     up = False
-                if event.key == pygame.K_r:
+                if event.key == simulation.settings.key_down:
                     down = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
+                if event.key == simulation.settings.key_left:
                     left = True
-                if event.key == pygame.K_s:
+                if event.key == simulation.settings.key_right:
                     right = True
-                if event.key == pygame.K_w:
+                if event.key == simulation.settings.key_up:
                     up = True
-                if event.key == pygame.K_r:
+                if event.key == simulation.settings.key_down:
                     down = True
 
         if left and right:
@@ -65,13 +71,18 @@ def main():
         else:
             character.move("stop vertical")
 
-        character.update(level.level.list_of_walls)
+        character.update(level.level.layout_rects)
+
         screen.fill((255, 255, 255))
 
-        for wall in level.level.list_of_walls:
-            pygame.draw.rect(screen, (200, 0, 200), wall.rect)
-        screen.blit(character.image, character.rect)
+        for line in level.level.layout:
+            for building_block in line:
+                if building_block is not None:
+                    building_block.blit(screen)
+
+        character.blit(screen)
         pygame.display.update()
         clock.tick(60)
+
 
 if __name__ == "__main__": main()

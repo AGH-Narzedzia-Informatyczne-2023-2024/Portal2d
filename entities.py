@@ -1,6 +1,8 @@
 import pygame
 from typing import List, Type, Tuple
 from numpy import sign
+
+import simulation
 from simulation import variables
 
 
@@ -12,12 +14,13 @@ class entities():
         self.velocity = pygame.Vector2(0, 0)
         self.rect = pygame.Rect(0, 0, 0, 0)
         self.new_position = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
+        self.image = pygame.Surface((0, 0))
 
-    def update(self, *args, **kwargs):
+    def update(self, *args):
         '''updates it's position, state nad movement'''
         pass
 
-    def collide(self, collidables: List[Type[pygame.Rect]]):
+    def collide(self, collidables: List[List[Type[pygame.Rect]]]):
         '''moves to by a designated velocity and for checks collisions, drives hitboxes out of each other if necessary'''
         self.new_position = pygame.Rect(self.position.x + self.velocity.x, self.position.y + self.velocity.y,
                                         self.rect.width, self.rect.height)
@@ -55,3 +58,16 @@ class entities():
             self.position.y -= self.velocity.y / steps
             self.new_position.y = self.position.y
             self.velocity.y = 0
+
+    def blit(self, screen):
+        width, height = pygame.display.get_surface().get_size()
+        offset_x = 0
+        offset_y = 0
+        if width / 13 > height / 9:
+            scale = height / simulation.variables.screen_size[1]
+            offset_x = abs((simulation.variables.screen_size[0] * scale - width) / 2)
+        else:
+            scale = width / simulation.variables.screen_size[0]
+            offset_y = abs((simulation.variables.screen_size[1] * scale - height) / 2)
+        #screen.blit(self.image, self.rect.scale_by(scale, scale).move(self.position.x * scale, self.position.y * scale))
+        pygame.draw.rect(screen, (0, 0, 0), (offset_x + self.position[0] * scale, offset_y + self.position[1] * scale, self.rect.width * scale, self.rect.height * scale))

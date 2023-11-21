@@ -13,14 +13,14 @@ class player(entities.entities):
         self.velocity = pygame.Vector2(0, 0)
         self.new_position = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
 
-    def update(self, collidables: List[Type[pygame.Rect]]):
+    def update(self, collidables: List[List[Type[pygame.Rect]]]):
         # limit maximum velocity
         if abs(self.velocity.x) > variables.max_velocity:
             self.velocity.x = sign(self.velocity.x) * variables.max_velocity
         if abs(self.velocity.y) > variables.max_velocity:
             self.velocity.y = sign(self.velocity.y) * variables.max_velocity
         # move and check collisions
-        self.collide(collidables=collidables)
+        self.collide(collidables)
 
     def move(self, direction: str):
         if direction == "left":
