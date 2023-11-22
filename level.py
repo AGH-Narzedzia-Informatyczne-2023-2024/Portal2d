@@ -51,7 +51,8 @@ class level:
     def load_level():
         try:
             with open("assets/levels", "r") as level_file:
-                pass
+                line = level_file.read()
+                print(line)
         except FileNotFoundError:
             print("Failed to load a level.")
 
