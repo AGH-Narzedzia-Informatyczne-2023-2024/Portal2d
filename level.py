@@ -32,6 +32,12 @@ class basic_block(building_block):
         self.image = pygame.Surface((self.rect.width, self.rect.height))
         pygame.draw.rect(self.image, (0, 255, 0), self.rect)
 
+class door_block(building_block):
+    def __init__(self, position: Tuple) -> object:
+        super().__init__(position)
+        self.image = pygame.Surface((self.rect.width, self.rect.height))
+        pygame.draw.rect(self.image, (0, 0, 200), self.rect)
+
 
 class level:
     '''level layout is 9x13, every block is a class itself'''
