@@ -32,6 +32,13 @@ class basic_block(building_block):
         self.image = pygame.Surface((self.rect.width, self.rect.height))
         pygame.draw.rect(self.image, (0, 255, 0), self.rect)
 
+class spike_block(building_block):
+
+    def __init__(self, position: Tuple) -> object:
+        super().__init__(position)
+        self.image = pygame.Surface((self.rect.width, self.rect.height))
+        pygame.draw.rect(self.image, (200, 0, 0), self.rect)
+
 class door_block(building_block):
     def __init__(self, position: Tuple) -> object:
         super().__init__(position)
@@ -50,7 +57,8 @@ class level:
     def load_level():
         try:
             with open("assets/levels", "r") as level_file:
-                pass
+                line = level_file.read()
+                print(line)
         except FileNotFoundError:
             print("Failed to load a level.")
 
