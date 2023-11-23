@@ -5,6 +5,11 @@ import level
 
 
 
+
+
+#Konflikt generator
+#Yaaaay 
+
 class menu:
     def blit(self):
         pass
@@ -12,4 +17,6 @@ class menu:
     def button(self):
         pass
 
+
 print("Zmiana wprowadzona przez Konrada!")
+
