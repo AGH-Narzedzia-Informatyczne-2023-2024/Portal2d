@@ -6,7 +6,9 @@ import level
 
 
 
+print("Welcome to this beautiful world of git and python")
 
+ main
 #Konflikt generator
 #Yaaaay 
 
@@ -17,6 +19,7 @@ class menu:
     def button(self):
         pass
 
+main
 
 print("Zmiana wprowadzona przez Konrada!")
 print("Hello world by kodziarz!")
