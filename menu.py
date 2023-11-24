@@ -3,9 +3,10 @@ import simulation
 import entities
 import level
 
-
-
-
+Konflikt_jarek
+main
+print  ("zmiana")
+main
 
 Konflikt_Bartek
 
