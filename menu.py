@@ -8,12 +8,12 @@ main
 print  ("zmiana")
 main
 
-Konflikt_Bartek
+Konflikt_Jarek
 
 print("Welcome to this beautiful world of git and python")
 
  main
-#Konflikt generator
+#Konflikt genrator2
 #Yaaaay 
 
 class menu:
