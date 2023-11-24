@@ -2,7 +2,7 @@ import pygame
 import simulation
 import entities
 import sys
-import player
+konflikt
 import level
 import menu
 
