@@ -6,7 +6,7 @@ import simulation
 
 class building_block:
     def __init__(self, position: Tuple):
-        self.table_position = position
+       konflikt
         self.position = (100 * self.table_position[0], 100 * self.table_position[1])
         self.rect = pygame.Rect(self.position[0], self.position[1], 100, 100)
         self.image = pygame.Surface((self.rect.width, self.rect.height))
