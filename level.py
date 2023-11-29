@@ -7,6 +7,7 @@ import player
 import simulation
 
 
+
 class building_block(simulation.GameObjects):
     def __init__(self, position: Tuple, isEntity: bool = False) -> object:
         super().__init__(isEntity)
