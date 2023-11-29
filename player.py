@@ -1,11 +1,14 @@
 import pygame
 from typing import List, Type, Tuple
 from numpy import sign
+
+import level
 from simulation import variables
 import entities
 
 class player(entities.entities):
     def __init__(self, init_position: Tuple[int, int]):
+        super().__init__()
         self.rect = pygame.Rect(init_position[0], init_position[1], 100, 100)
         self.image = pygame.Surface((self.rect.width, self.rect.height))
         pygame.draw.rect(self.image, (0, 0, 0), self.rect)
@@ -13,7 +16,8 @@ class player(entities.entities):
         self.velocity = pygame.Vector2(0, 0)
         self.new_position = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
 
-    def update(self, collidables: List[List[Type[pygame.Rect]]]):
+    def update(self):
+        collidables = level.level.layout_rects
         # limit maximum velocity
         if abs(self.velocity.x) > variables.max_velocity:
             self.velocity.x = sign(self.velocity.x) * variables.max_velocity
