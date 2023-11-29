@@ -18,6 +18,8 @@ def main():
 
     level.level.create_level()
 
+    level.level.load_level()
+
     left = False
     right = False
     up = False
@@ -71,16 +73,12 @@ def main():
         else:
             character.move("stop vertical")
 
-        character.update(level.level.layout_rects)
+        simulation.GameObjects.update()
 
         screen.fill((255, 255, 255))
 
-        for line in level.level.layout:
-            for building_block in line:
-                if building_block is not None:
-                    building_block.blit(screen)
+        simulation.GameObjects.blit(screen)
 
-        character.blit(screen)
         pygame.display.update()
         clock.tick(60)
 

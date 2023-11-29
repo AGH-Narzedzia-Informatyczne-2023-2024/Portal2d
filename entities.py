@@ -7,8 +7,9 @@ from simulation import variables
 
 
 
-class entities():
+class entities(simulation.GameObjects):
     def __init__(self):
+        super().__init__(True)
         self.collisions = []
         self.position = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
@@ -16,7 +17,7 @@ class entities():
         self.new_position = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
         self.image = pygame.Surface((0, 0))
 
-    def update(self, *args):
+    def update(self):
         '''updates it's position, state nad movement'''
         pass
 
