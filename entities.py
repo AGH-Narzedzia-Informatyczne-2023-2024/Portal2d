@@ -82,11 +82,27 @@ class enemy_bean(entities):
         super().__init__()
         self.position = pygame.Vector2(position)
         self.image_og = pygame.image.load("assets/images/enemy_bean.png").convert_alpha()
-        self.image = pygame.transform.scale(self.image_og, (100, 200))
+        self.image = pygame.transform.scale(self.image_og, (50, 100))
         self.rect = self.image.get_rect()
+        self.rect.x, self.rect.y = self.position
 
     def update(self, collidables):
         player = simulation.GameObjects.get("player")
         self.velocity.x = sign(player.position.x - self.position.x) * 3
         self.velocity.y = sign(player.position.y - self.position.y) * 3
         self.collide(collidables)
+
+class enemy_virus(entities):
+    def __init__(self, position: Tuple):
+        super().__init__()
+        self.position = pygame.Vector2(position)
+        self.image_og = pygame.image.load("assets/images/enemy_virus.png").convert_alpha()
+        self.image = pygame.transform.scale(self.image_og, (50, 50))
+        self.rect = self.image.get_rect()
+        self.rect.x, self.rect.y = self.position
+
+    def update(self, collidables):
+        player = simulation.GameObjects.get("player")
+        self.velocity.x = sign(player.position.x - self.position.x)
+        self.velocity.y = sign(player.position.y - self.position.y)
+        self.collide([])

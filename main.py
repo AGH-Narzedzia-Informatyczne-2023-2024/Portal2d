@@ -15,13 +15,14 @@ def main():
     screen = pygame.display.set_mode(simulation.variables.screen_size, pygame.RESIZABLE)
     screen.fill((255, 255, 255))
 
-    character = player.player((300, 300))
-
-    enemy = entities.enemy_bean((500, 500))
-
     level.level.create_level()
 
     level.level.load_level()
+
+    character = player.player((300, 300))
+
+    entities.enemy_bean((500, 500))
+    entities.enemy_virus((900, 700))
 
     left = False
     right = False
@@ -81,8 +82,6 @@ def main():
         screen.fill((255, 255, 255))
 
         simulation.GameObjects.blit(screen)
-
-        #enemy.blit(screen)
 
         pygame.display.update()
         clock.tick(60)
