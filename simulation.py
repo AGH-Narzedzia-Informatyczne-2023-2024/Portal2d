@@ -16,10 +16,19 @@ class GameObjects:
         gameObjects.append(self)
         if isEntity:
             gameEntities.append(self)
+
     @staticmethod
-    def update():
+    def get(name: str):
+        for gameObject in gameObjects:
+            if gameObject.__class__.__name__ == name:
+                return gameObject
+        return None
+
+
+    @staticmethod
+    def update(collidables):
         for entity in gameEntities:
-            entity.update()
+            entity.update(collidables)
     @staticmethod
     def blit(screen):
         for object in gameObjects:

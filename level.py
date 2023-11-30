@@ -84,7 +84,7 @@ class level:
                     for j in range(9):
                         level.layout[i][j] = None
                 for gameElement in simulation.gameObjects:
-                    if gameElement.__class__.__name__ != player.player.__name__:
+                    if any([gameElement.__class__.__name__ == name.__name__ for name in building_block.__subclasses__()]):
                         simulation.gameObjects.remove(gameElement)
                 for line in level_file.readlines():
                     line = line.split("; ")

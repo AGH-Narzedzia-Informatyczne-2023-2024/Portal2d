@@ -12,10 +12,12 @@ def main():
     pygame.init()
     clock = pygame.time.Clock()
 
-    screen = pygame.display.set_mode((1300, 900), pygame.RESIZABLE)
+    screen = pygame.display.set_mode(simulation.variables.screen_size, pygame.RESIZABLE)
     screen.fill((255, 255, 255))
 
     character = player.player((300, 300))
+
+    enemy = entities.enemy_bean((500, 500))
 
     level.level.create_level()
 
@@ -74,11 +76,13 @@ def main():
         else:
             character.move("stop vertical")
 
-        simulation.GameObjects.update()
+        simulation.GameObjects.update(level.level.layout_rects)
 
         screen.fill((255, 255, 255))
 
         simulation.GameObjects.blit(screen)
+
+        #enemy.blit(screen)
 
         pygame.display.update()
         clock.tick(60)
