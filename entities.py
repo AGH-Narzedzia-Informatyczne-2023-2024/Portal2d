@@ -61,23 +61,12 @@ class entities(simulation.GameObjects):
             self.velocity.y = 0
 
     def blit(self, screen):
-        width, height = pygame.display.get_surface().get_size()
-        offset_x = 0
-        offset_y = 0
-        if width / 13 > height / 9:
-            scale = height / simulation.variables.screen_size[1]
-            offset_x = abs((simulation.variables.screen_size[0] * scale - width) / 2)
-        else:
-            scale = width / simulation.variables.screen_size[0]
-            offset_y = abs((simulation.variables.screen_size[1] * scale - height) / 2)
-        #square_side = int(100 * scale)
-        #self.position = (offset_x + self.position, offset_y + self.table_position[1] * square_side)
         try:
-            self.image = pygame.transform.scale(self.image_og, (self.rect.width * scale, self.rect.height * scale))
-            screen.blit(self.image, self.rect.scale_by(scale, scale))
+            self.image = pygame.transform.scale(self.image_og, (self.rect.width * simulation.variables.current_scale, self.rect.height * simulation.variables.current_scale))
+            screen.blit(self.image, (simulation.variables.current_offset[0] + self.position.x * simulation.variables.current_scale, simulation.variables.current_offset[1] + self.position.y * simulation.variables.current_scale))
         except:
         #screen.blit(self.image, self.rect.scale_by(scale, scale).move(self.position.x * scale, self.position.y * scale))
-            pygame.draw.rect(screen, (0, 0, 0), (offset_x + self.position[0] * scale, offset_y + self.position[1] * scale, self.rect.width * scale, self.rect.height * scale))
+            pygame.draw.rect(screen, (0, 0, 0), (simulation.variables.current_offset[0] + self.position[0] * simulation.variables.current_scale, simulation.variables.current_offset[1] + self.position[1] * simulation.variables.current_scale, self.rect.width * simulation.variables.current_scale, self.rect.height * simulation.variables.current_scale))
 
 class enemy_bean(entities):
     def __init__(self, position: Tuple):

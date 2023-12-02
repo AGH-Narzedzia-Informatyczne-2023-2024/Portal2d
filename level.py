@@ -18,18 +18,8 @@ class building_block(simulation.GameObjects):
         pygame.draw.rect(self.image, (0, 255, 0), self.rect)
 
     def blit(self, screen):
-        width, height = pygame.display.get_surface().get_size()
-        offset_x = 0
-        offset_y = 0
-        if width / 13 > height / 9:
-            scale = height / simulation.variables.screen_size[1]
-            offset_x = abs((simulation.variables.screen_size[0] * scale - width) / 2)
-        else:
-            scale = width / simulation.variables.screen_size[0]
-            offset_y = abs((simulation.variables.screen_size[1] * scale - height) / 2)
-        square_side = int(100 * scale)
-        self.position = (
-        offset_x + self.table_position[0] * square_side, offset_y + self.table_position[1] * square_side)
+        square_side = int(100 * simulation.variables.current_scale)
+        self.position = (simulation.variables.current_offset[0] + self.table_position[0] * square_side, simulation.variables.current_offset[1] + self.table_position[1] * square_side)
         try:
             self.image = pygame.transform.scale(self.image_og, (square_side, square_side))
             screen.blit(self.image, self.position)

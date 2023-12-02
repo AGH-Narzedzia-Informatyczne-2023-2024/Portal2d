@@ -7,7 +7,19 @@ class variables:
     movement_velocity = 7
     frame_rate = 60
     screen_size = (1300, 900)
+    current_offset = [0, 0]
+    current_scale = 1
 
+def get_current_scale():
+    width, height = pygame.display.get_surface().get_size()
+    if width / 13 > height / 9:
+        variables.current_scale = height / variables.screen_size[1]
+        variables.current_offset[0] = abs((variables.screen_size[0] * variables.current_scale - width) / 2)
+        variables.current_offset[1] = 0
+    else:
+        variables.current_scale = width / variables.screen_size[0]
+        variables.current_offset[1] = abs((variables.screen_size[1] * variables.current_scale - height) / 2)
+        variables.current_offset[0] = 0
 
 gameObjects = []
 gameEntities = []

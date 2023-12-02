@@ -37,7 +37,7 @@ def main():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.VIDEORESIZE:
-                pass
+                simulation.get_current_scale()
             if event.type == pygame.VIDEOEXPOSE:
                 pass
             if event.type == pygame.KEYUP:
