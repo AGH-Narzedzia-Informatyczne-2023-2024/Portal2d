@@ -70,9 +70,11 @@ class entities(simulation.GameObjects):
         else:
             scale = width / simulation.variables.screen_size[0]
             offset_y = abs((simulation.variables.screen_size[1] * scale - height) / 2)
+        #square_side = int(100 * scale)
+        #self.position = (offset_x + self.position, offset_y + self.table_position[1] * square_side)
         try:
-            self.image = pygame.transform.scale(self.image_og, (self.image.get_width() * scale, self.image.get_height() * scale))
-            screen.blit(self.image, self.rect)
+            self.image = pygame.transform.scale(self.image_og, (self.rect.width * scale, self.rect.height * scale))
+            screen.blit(self.image, self.rect.scale_by(scale, scale))
         except:
         #screen.blit(self.image, self.rect.scale_by(scale, scale).move(self.position.x * scale, self.position.y * scale))
             pygame.draw.rect(screen, (0, 0, 0), (offset_x + self.position[0] * scale, offset_y + self.position[1] * scale, self.rect.width * scale, self.rect.height * scale))
