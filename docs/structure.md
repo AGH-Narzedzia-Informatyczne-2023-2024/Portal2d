@@ -24,15 +24,15 @@ flowchart TD
 
 Każdy plik poniżej importuje wszystkie pliki powyżej
 * settings.json - ustawienia, które mogą być zmienione przez użytkownika
-* [simulation.py](#simulation.py) - parametry symulacji, wczytuje plik settings oraz zawiera informacje o klawiszach czy ilości klatek na sekundę itp (ważne ustawienie devMode = True, tylko do testowania)
-* entities.py - klasa ogólna dla bytów, jak i zawiera przeciwników (może rodzielić bossów w przyszłości), zawiera też przedmioty
+* [simulation.py](#simulation) - parametry symulacji, wczytuje plik settings oraz zawiera informacje o klawiszach czy ilości klatek na sekundę itp (ważne ustawienie devMode = True, tylko do testowania)
+* [entities.py](#entities) - klasa ogólna dla bytów, jak i zawiera przeciwników (może rodzielić bossów w przyszłości), zawiera też przedmioty
 * level.py - wczytuje poziomy z plików, jak i definuje obiekty, które znajdują się w poziomie
 * player.py - zawiera wszystkie akcje związane w graczem sterowanym, jego ekwipunek, umiejętności
 * main.py - główna pętla programu
 
-## simulation.py
+## simulation
 * [variables](#variables)
-* [get_current_scale()](#get_current_scale())
+* [get_current_scale()](#get_current_scale)
 * [gameObjects](#gameobjects)
 * [gameEntities](#gameentities)
 * [GameObjects](#gameobjects)
@@ -70,3 +70,38 @@ Lista bytów w grze.
 * blit(screen) - wywołuje blit na kązdym obiekcie z listy gameObjects
 
 ### settings
+
+* settings_dictionary - dict z sterowaniem
+* pygame_settings_dictionary - dict z mapowaniem klawiszy na pygame.K_
+* load_settings() - wgrywa ustawienia z pliku settings.json
+* save_settings() - zapisuje ustawniena do pliku settings.json
+
+## entities
+
+* [entities](#entities)
+* [enemy](#enemy)
+
+### entities
+
+* init() - inicjuje klasę
+* update(collidables: List) - funkcja wyjściowa
+* collide(collidables) - oblicza kolizję i ruch
+* blit(screen) - wyświetla i skaluje obiekt
+* collisions - lista obiektów, z którym obecnie koliduje
+* position - wektor pozycji, float
+* velocity - wektor prędkości, float
+* rect - Rect, pozycja (int), wymiary, hitbox
+* new_position - Rect, przewidywana pozycja używana do kolizji
+* image - obraz w orginalnej rozdzielczości
+* image_display - obraz przeskalowany do wyjściowego ekranu
+
+### enemy
+
+Aby zainicjować przeciwnika, należy zdefiniować:
+* super().init()
+* position
+* image
+* imagę_display
+* rect
+* rect.x, rect.y = position
+* update() - wektor poruszania się oraz rodzaj kolizji
