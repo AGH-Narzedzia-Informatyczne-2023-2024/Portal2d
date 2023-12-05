@@ -15,7 +15,7 @@ def main():
     screen = pygame.display.set_mode(simulation.variables.screen_size, pygame.RESIZABLE)
     screen.fill((255, 255, 255))
 
-    level.level.create_level()
+    #level.level.create_level()
 
     level.level.load_level()
 

@@ -6,13 +6,14 @@ class variables:
     max_velocity = 100
     movement_velocity = 7
     frame_rate = 60
-    screen_size = (1300, 900)
+    grid_size = (15, 11)
+    screen_size = (grid_size[0] * 100, grid_size[1] * 100)
     current_offset = [0, 0]
     current_scale = 1
 
 def get_current_scale():
     width, height = pygame.display.get_surface().get_size()
-    if width / 13 > height / 9:
+    if width / variables.grid_size[0] > height / variables.grid_size[1]:
         variables.current_scale = height / variables.screen_size[1]
         variables.current_offset[0] = abs((variables.screen_size[0] * variables.current_scale - width) / 2)
         variables.current_offset[1] = 0
@@ -28,6 +29,10 @@ class GameObjects:
         gameObjects.append(self)
         if isEntity:
             gameEntities.append(self)
+
+    def delete(self):
+        gameObjects.remove(self)
+        gameEntities.remove(self)
 
     @staticmethod
     def get(name: str):

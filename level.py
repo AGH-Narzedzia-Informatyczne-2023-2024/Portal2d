@@ -57,25 +57,26 @@ class door_block(building_block):
 
 
 class level:
-    '''level layout is 9x13, every block is a class itself'''
+    '''level layout is determinated by simulation.grid_size, every block is a class itself
+    layout is in coordinates y, x'''
 
     layout_rects = []  # pure list [block, block, block, block]
 
-    layout = []  # list of list [[block, block]
-
-    #              [block, block]]
+    layout = [[None for i in range(simulation.variables.grid_size[1])]
+              for j in range(simulation.variables.grid_size[0])]  # list of list [[block, block]
+    #                                                                             [block, block]]
 
     @staticmethod
     def load_level():
         try:
             with open("assets/levels", "r") as level_file:
                 level.layout_rects = []
-                for i in range(13):
-                    for j in range(9):
+                for i in range(simulation.variables.grid_size[0]):
+                    for j in range(simulation.variables.grid_size[1]):
                         level.layout[i][j] = None
                 for gameElement in simulation.gameObjects:
                     if any([gameElement.__class__.__name__ == name.__name__ for name in building_block.__subclasses__()]):
-                        simulation.gameObjects.remove(gameElement)
+                        gameElement.delete()
                 for line in level_file.readlines():
                     line = line.split("; ")
                     line[1] = line[1].replace("(", "")
@@ -101,10 +102,10 @@ class level:
 
     @staticmethod
     def create_level():
-        for i in range(13):
+        for i in range(simulation.variables.grid_size[0]):
             temp = []
-            for j in range(9):
-                if i == 0 or i == 12 or j == 0 or j == 8:
+            for j in range(simulation.variables.grid_size[1]):
+                if i == 0 or i == simulation.variables.grid_size[0] - 1 or j == 0 or j == simulation.variables.grid_size[1] - 1:
                     block = basic_block((i, j))
                     temp.append(block)
                     level.layout_rects.append(block)
