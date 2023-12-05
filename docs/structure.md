@@ -33,9 +33,9 @@ Każdy plik poniżej importuje wszystkie pliki powyżej
 ## simulation.py
 * [variables](###variables)
 * [get_current_scale()](###get_current_scale())
-* [gameObjects](###gameObjects)
-* [gameEntities](###gameEntities)
-* [GameObjects](###GameObjects)
+* [gameObjects](###gameobjects)
+* [gameEntities](###gameentities)
+* [GameObjects](###gameobjects)
 * [settings](###settings)
 
 ### variables
