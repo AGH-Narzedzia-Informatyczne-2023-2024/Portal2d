@@ -24,19 +24,19 @@ flowchart TD
 
 Każdy plik poniżej importuje wszystkie pliki powyżej
 * settings.json - ustawienia, które mogą być zmienione przez użytkownika
-* [simulation.py](##simulation.py) - parametry symulacji, wczytuje plik settings oraz zawiera informacje o klawiszach czy ilości klatek na sekundę itp (ważne ustawienie devMode = True, tylko do testowania)
+* [simulation.py](#simulation.py) - parametry symulacji, wczytuje plik settings oraz zawiera informacje o klawiszach czy ilości klatek na sekundę itp (ważne ustawienie devMode = True, tylko do testowania)
 * entities.py - klasa ogólna dla bytów, jak i zawiera przeciwników (może rodzielić bossów w przyszłości), zawiera też przedmioty
 * level.py - wczytuje poziomy z plików, jak i definuje obiekty, które znajdują się w poziomie
 * player.py - zawiera wszystkie akcje związane w graczem sterowanym, jego ekwipunek, umiejętności
 * main.py - główna pętla programu
 
 ## simulation.py
-* [variables](###variables)
-* [get_current_scale()](###get_current_scale())
-* [gameObjects](###gameobjects)
-* [gameEntities](###gameentities)
-* [GameObjects](###gameobjects)
-* [settings](###settings)
+* [variables](#variables)
+* [get_current_scale()](#get_current_scale())
+* [gameObjects](#gameobjects)
+* [gameEntities](#gameentities)
+* [GameObjects](#gameobjects)
+* [settings](#settings)
 
 ### variables
 
