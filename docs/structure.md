@@ -141,7 +141,10 @@ Aby zdefiniować nowy blok należy podać:
 ### Zapis poziomu
 
 Poziom jest zapisany po nazwach bloków:
+
 nazwa_bloku1; (pozycja x1, pozycja y1)
+
 nazwa_bloku2; (pozycja x2, pozycja y2)
+
 Wczytywanie oraz zapisywanie używają nazwy klas bloków. Nazwy są pobierane z subclass building_block.
 
