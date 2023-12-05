@@ -21,8 +21,8 @@ class building_block(simulation.GameObjects):
         square_side = int(100 * simulation.variables.current_scale)
         self.position = (simulation.variables.current_offset[0] + self.table_position[0] * square_side, simulation.variables.current_offset[1] + self.table_position[1] * square_side)
         try:
-            self.image = pygame.transform.scale(self.image_og, (square_side, square_side))
-            screen.blit(self.image, self.position)
+            self.image_display = pygame.transform.scale(self.image, (square_side, square_side))
+            screen.blit(self.image_display, self.position)
         except:
             # printf("failed to load")
             pygame.draw.rect(screen, (0, 200, 0), (self.position[0], self.position[1], square_side, square_side))
@@ -39,16 +39,16 @@ class block_entity(building_block):
 class basic_block(building_block):
     def __init__(self, position: Tuple) -> object:
         super().__init__(position)
-        self.image_og = pygame.image.load("assets/images/basic_block.png").convert()
-        self.image = pygame.transform.scale(self.image_og, (100, 100))
+        self.image = pygame.image.load("assets/images/basic_block.png").convert()
+        self.image_display = pygame.transform.scale(self.image, (100, 100))
 
 
 class spike_block(building_block):
 
     def __init__(self, position: Tuple) -> object:
         super().__init__(position)
-        self.image_og = pygame.image.load("assets/images/spike_block.png").convert()
-        self.image = pygame.transform.scale(self.image_og, (100, 100))
+        self.image = pygame.image.load("assets/images/spike_block.png").convert()
+        self.image_display = pygame.transform.scale(self.image, (100, 100))
 
 
 class door_block(building_block):
