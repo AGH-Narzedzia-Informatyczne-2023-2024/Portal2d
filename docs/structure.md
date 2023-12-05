@@ -109,10 +109,39 @@ Aby zainicjować przeciwnika, należy zdefiniować:
 ## level
 
 * [building_block[(#building_block)
+* [block_entity](#block_entity)
+* [block](#block)
+* [level](#level)
+* [Zapis poziomu](#zapis-poziomu)
 
 ### building_block
 
 * init(position: Tuple, isEntity: bool) - inicjuje klasę, klasa nadrzędna dla bloków
 * blit(screen) - wyświetla i skaluje obiekt
 
+### block_entity
+
+* update - jeszcze nie wprowadzono
+
+### block
+
+Aby zdefiniować nowy blok należy podać:
+* super().init()
+* image
+* image_display
+
+### level
+
+* layout_rects - lista bloków
+* layout - list bloków w formie [[blok, blok], [blok, blok]]
+* create_level - tworzy podstawowy poziom do testów
+* save_level(level_id: str) - zapisuje poziom.
+* load_level(level_id: str) - ładuje poziom o wskazanym id. Usuwa level_rects. Usuwa wszystkie bloki z layout. Potem wypełnia layout i layout_rects nowymi blockami.
+
+### Zapis poziomu
+
+Poziom jest zapisany po nazwach bloków:
+nazwa_bloku1; (pozycja x1, pozycja y1)
+nazwa_bloku2; (pozycja x2, pozycja y2)
+Wczytywanie oraz zapisywanie używają nazwy klas bloków. Nazwy są pobierane z subclass building_block.
 
