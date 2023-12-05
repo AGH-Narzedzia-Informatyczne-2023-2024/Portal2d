@@ -32,11 +32,11 @@ Każdy plik poniżej importuje wszystkie pliki powyżej
 
 ## simulation.py
 * [variables](###variables)
-* [get_current_scale()](### get_current_scale())
-* [gameObjects](### gameObjects)
-* [gameEntities](### gameEntities)
-* [GameObjects](### GameObjects)
-* [settings](### settings)
+* [get_current_scale()](###get_current_scale())
+* [gameObjects](###gameObjects)
+* [gameEntities](###gameEntities)
+* [GameObjects](###GameObjects)
+* [settings](###settings)
 
 ### variables
 
