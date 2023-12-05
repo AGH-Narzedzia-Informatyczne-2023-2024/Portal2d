@@ -67,9 +67,9 @@ class level:
     #                                                                             [block, block]]
 
     @staticmethod
-    def load_level():
+    def load_level(level_id: str):
         try:
-            with open("assets/levels", "r") as level_file:
+            with open("assets/level" + level_id, "r") as level_file:
                 level.layout_rects = []
                 for i in range(simulation.variables.grid_size[0]):
                     for j in range(simulation.variables.grid_size[1]):
@@ -94,7 +94,7 @@ class level:
     @staticmethod
     def save_level():
         try:
-            with open("assets/levels", "w") as level_file:
+            with open("assets/level1", "w") as level_file:
                 for block in level.layout_rects:
                     level_file.write(str(block.__class__.__name__) + "; " + str(block.table_position) + "\n")
         except FileNotFoundError:

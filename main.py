@@ -17,19 +17,19 @@ def main():
 
     #level.level.create_level()
 
-    level.level.load_level()
+    level.level.load_level("1")
 
     character = player.player((300, 300))
 
     entities.enemy_bean((500, 500))
     entities.enemy_virus((900, 700))
 
+    simulation.settings.load_settings()
+
     left = False
     right = False
     up = False
     down = False
-
-    simulation.settings.read_settings()
 
     while True:
         for event in pygame.event.get():

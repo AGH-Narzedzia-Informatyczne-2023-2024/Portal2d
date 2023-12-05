@@ -69,7 +69,7 @@ class settings:
     shoot = None
 
     @staticmethod
-    def read_settings():
+    def load_settings():
         try:
             with open("assets/settings.json") as settings_file:
                 data = json.load(settings_file)
