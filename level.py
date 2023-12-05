@@ -92,9 +92,9 @@ class level:
             print("Failed to load a level.")
 
     @staticmethod
-    def save_level():
+    def save_level(level_id: str):
         try:
-            with open("assets/level1", "w") as level_file:
+            with open("assets/level" + level_id, "w") as level_file:
                 for block in level.layout_rects:
                     level_file.write(str(block.__class__.__name__) + "; " + str(block.table_position) + "\n")
         except FileNotFoundError:
