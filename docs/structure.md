@@ -27,8 +27,9 @@ Każdy plik poniżej importuje wszystkie pliki powyżej
 * [simulation.py](#simulation) - parametry symulacji, wczytuje plik settings oraz zawiera informacje o klawiszach czy ilości klatek na sekundę itp (ważne ustawienie devMode = True, tylko do testowania)
 * [entities.py](#entities) - klasa ogólna dla bytów, jak i zawiera przeciwników (może rodzielić bossów w przyszłości), zawiera też przedmioty
 * [level.py](#level) - wczytuje poziomy z plików, jak i definuje obiekty, które znajdują się w poziomie
-* player.py - zawiera wszystkie akcje związane w graczem sterowanym, jego ekwipunek, umiejętności
-* main.py - główna pętla programu
+* [player.py](#player) - zawiera wszystkie akcje związane w graczem sterowanym, jego ekwipunek, umiejętności
+* [menu.py](#menu) - główne menu
+* [main.py](#main) - główna pętla programu
 
 ## simulation
 * [variables](#variables)
@@ -140,11 +141,29 @@ Aby zdefiniować nowy blok należy podać:
 
 ### Zapis poziomu
 
-Poziom jest zapisany po nazwach bloków:
-
-nazwa_bloku1; (pozycja x1, pozycja y1)
-
-nazwa_bloku2; (pozycja x2, pozycja y2)
-
+Poziom jest zapisany po nazwach bloków:\
+nazwa_bloku1; (pozycja x1, pozycja y1)\
+nazwa_bloku2; (pozycja x2, pozycja y2)\
 Wczytywanie oraz zapisywanie używają nazwy klas bloków. Nazwy są pobierane z subclass building_block.
 
+## player
+
+* [player](#player)
+
+### player
+* init(position: Tuple)
+* update(colldibales)
+* move(direction: str) - w zależności od stanów direction, zmienia wartość prędkości
+* rect
+* image
+* position
+* velocity
+* new_position
+
+## menu
+
+BRAK
+
+## main
+
+Definiuje przeciwników, gracza, ładuje poziom, ładuje ustawienia, zmienia stan player, wywołuje funkcje blit i update z simulation.GameObjects, wyświetla to na ekranie.
