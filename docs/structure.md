@@ -26,7 +26,7 @@ Każdy plik poniżej importuje wszystkie pliki powyżej
 * settings.json - ustawienia, które mogą być zmienione przez użytkownika
 * [simulation.py](#simulation) - parametry symulacji, wczytuje plik settings oraz zawiera informacje o klawiszach czy ilości klatek na sekundę itp (ważne ustawienie devMode = True, tylko do testowania)
 * [entities.py](#entities) - klasa ogólna dla bytów, jak i zawiera przeciwników (może rodzielić bossów w przyszłości), zawiera też przedmioty
-* level.py - wczytuje poziomy z plików, jak i definuje obiekty, które znajdują się w poziomie
+* [level.py](#level) - wczytuje poziomy z plików, jak i definuje obiekty, które znajdują się w poziomie
 * player.py - zawiera wszystkie akcje związane w graczem sterowanym, jego ekwipunek, umiejętności
 * main.py - główna pętla programu
 
@@ -83,7 +83,7 @@ Lista bytów w grze.
 
 ### entities
 
-* init() - inicjuje klasę
+* init() - inicjuje klasę, klasa nadrzędna dla bytów
 * update(collidables: List) - funkcja wyjściowa
 * collide(collidables) - oblicza kolizję i ruch
 * blit(screen) - wyświetla i skaluje obiekt
@@ -101,7 +101,18 @@ Aby zainicjować przeciwnika, należy zdefiniować:
 * super().init()
 * position
 * image
-* imagę_display
+* image_display
 * rect
 * rect.x, rect.y = position
 * update() - wektor poruszania się oraz rodzaj kolizji
+
+## level
+
+* [building_block[(#building_block)
+
+### building_block
+
+* init(position: Tuple, isEntity: bool) - inicjuje klasę, klasa nadrzędna dla bloków
+* blit(screen) - wyświetla i skaluje obiekt
+
+
