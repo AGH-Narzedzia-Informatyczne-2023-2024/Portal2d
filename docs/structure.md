@@ -130,6 +130,7 @@ Aby zdefiniować nowy blok należy podać:
 * super().init()
 * image
 * image_display
+* has_hitbox: bool
 
 ### level
 
@@ -159,6 +160,7 @@ Wczytywanie oraz zapisywanie używają nazwy klas bloków. Nazwy są pobierane z
 * position
 * velocity
 * new_position
+* interact(blok: str) - definiuje interakcje z daną nazwą blocku
 
 ## menu
 
