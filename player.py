@@ -38,3 +38,8 @@ class player(entities.entities):
             self.velocity.y = variables.movement_velocity
         elif direction == "stop vertical":
             self.velocity.y = 0
+
+    def interact(self, block: str):
+        if block == "spike_block":
+            self.velocity.x /= 4
+            self.velocity.y /= 4

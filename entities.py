@@ -27,6 +27,14 @@ class entities(simulation.GameObjects):
         self.new_position = pygame.Rect(self.position.x + self.velocity.x, self.position.y + self.velocity.y,
                                         self.rect.width, self.rect.height)
         self.collisions = [collidables[i] for i in self.new_position.collidelistall(collidables)]
+        #check if it has hitbox
+        for collidable in self.collisions:
+            # define interaction
+            if self.__class__.__name__ == "player":
+                self.interact(collidable.__class__.__name__)
+            if not collidable.has_hitbox:
+                self.collisions.remove(collidable)
+
         if self.collisions:
             self.new_position = self.rect
             steps = round(self.velocity.length())

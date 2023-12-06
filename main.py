@@ -12,7 +12,8 @@ def main():
     pygame.init()
     clock = pygame.time.Clock()
 
-    screen = pygame.display.set_mode(simulation.variables.screen_size, pygame.RESIZABLE)
+    screen = pygame.display.set_mode((1000, 1000), pygame.RESIZABLE)
+    simulation.get_current_scale()
     screen.fill((255, 255, 255))
 
     #level.level.create_level()

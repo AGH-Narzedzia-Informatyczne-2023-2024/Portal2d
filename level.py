@@ -16,6 +16,7 @@ class building_block(simulation.GameObjects):
         self.rect = pygame.Rect(self.position[0], self.position[1], 100, 100)
         self.image = pygame.Surface((self.rect.width, self.rect.height))
         pygame.draw.rect(self.image, (0, 255, 0), self.rect)
+        self.has_hitbox = True
 
     def blit(self, screen):
         square_side = int(100 * simulation.variables.current_scale)
@@ -27,20 +28,12 @@ class building_block(simulation.GameObjects):
             # printf("failed to load")
             pygame.draw.rect(screen, (0, 200, 0), (self.position[0], self.position[1], square_side, square_side))
 
-
-class block_entity(building_block):
-    def __init__(self, position: Tuple):
-        super().__init__(position, True)
-
-    def update(self):
-        pass
-
-
 class basic_block(building_block):
     def __init__(self, position: Tuple) -> object:
         super().__init__(position)
         self.image = pygame.image.load("assets/images/basic_block.png").convert()
         self.image_display = pygame.transform.scale(self.image, (100, 100))
+        self.has_hitbox = True
 
 
 class spike_block(building_block):
@@ -49,11 +42,13 @@ class spike_block(building_block):
         super().__init__(position)
         self.image = pygame.image.load("assets/images/spike_block.png").convert()
         self.image_display = pygame.transform.scale(self.image, (100, 100))
+        self.has_hitbox = False
 
 
 class door_block(building_block):
     def __init__(self, position: Tuple) -> object:
         super().__init__(position)
+        self.has_hitbox = False
 
 
 class level:
