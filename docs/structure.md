@@ -160,7 +160,7 @@ Wczytywanie oraz zapisywanie używają nazwy klas bloków. Nazwy są pobierane z
 * position
 * velocity
 * new_position
-* interact(blok: str) - definiuje interakcje z daną nazwą blocku
+* interact(blok: str) - definiuje interakcje z daną nazwą klasy blocku
 
 ## menu
 
