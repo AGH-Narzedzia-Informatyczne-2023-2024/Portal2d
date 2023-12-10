@@ -105,3 +105,62 @@ class enemy_virus(entities):
         if self.velocity.length() != 0:
             self.velocity.clamp_magnitude_ip(1)
         self.collide([])
+
+ownedItems = []
+class playerItems():
+    def __init__(self):
+        self.owned = False
+        self.equipped = False
+
+    def obtain(self):
+        self.owned = True
+        ownedItems.append(self)
+
+    def equip(self):
+        pass                            #TBA kiedy bedzie inventory
+
+class Guns(playerItems):
+    def __init__(self, bullet_velocity: int):
+        super().__init__()
+        self.bullet_velocity = bullet_velocity
+
+class PortalGuns(Guns):
+    pass
+
+class LaserGuns(Guns):
+    pass
+
+class Shoes(playerItems):
+    def __init__(self, bonus_speed: int):
+        super().__init__()
+        self.bonus_speed = bonus_speed
+
+class Potions(playerItems):
+    def __init__(self):
+        super().__init__()
+        self.used = False
+
+class HP_Potions(Potions):
+    def __init__(self, points: int):
+        super().__init__()
+        self.points = points
+
+    def obtain(self):
+        self.owned = True
+        self.used = False
+        ownedItems.append(self)
+
+    def drink(self):
+        self.used = True
+        #Dodac HP
+        ownedItems.remove(self)
+
+class MysteryBox(playerItems):
+    def __init__(self):
+        super().__init__()
+
+
+
+
+
+
