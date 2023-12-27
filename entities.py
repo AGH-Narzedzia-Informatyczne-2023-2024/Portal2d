@@ -107,17 +107,20 @@ class enemy_virus(entities):
         self.collide([])
 
 ownedItems = []
+equipedItems = []
 class playerItems():
     def __init__(self):
         self.owned = False
         self.equipped = False
+        self.icon = pygame.Surface((100,100))
 
     def obtain(self):
         self.owned = True
         ownedItems.append(self)
 
     def equip(self):
-        pass                            #TBA kiedy bedzie inventory
+        self.equipped = True
+        equipedItems.append(self)
 
 class Guns(playerItems):
     def __init__(self, bullet_velocity: int):
@@ -158,6 +161,9 @@ class HP_Potions(Potions):
 class MysteryBox(playerItems):
     def __init__(self):
         super().__init__()
+
+    def open(self):
+        pass
 
 
 
